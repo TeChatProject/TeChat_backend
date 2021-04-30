@@ -211,7 +211,7 @@
         <div class="clearfix"></div>
 
       </div> <!-- end login -->
-      <div class="logo"><img src="<?php echo base_url("/auth/images/btulogo.png")?>" height="70%" width="50%">
+      <!-- <div class="logo"><img src="" height="70%" width="50%"> -->
           
           <div class="clearfix"></div>
       </div>

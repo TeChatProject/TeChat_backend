@@ -167,17 +167,17 @@
                             <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
-                            <h4 class="text-capitalize">John Doe</h4>
-                            <p class="text-muted text-capitalize">web designer</p>
+                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4>
+                            <p class="text-muted text-capitalize"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></p>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block">PRO Account</a>
+                            <a href="" class="btn btn-success text-center btn-block">Çevrimiçi?</a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
                                 <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
-                                <a href="" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
+                                <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
