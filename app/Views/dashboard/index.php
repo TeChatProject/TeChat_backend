@@ -136,6 +136,19 @@
         width:50px;
         height:50px;
     }
+    .modal-backdrop {
+        display:none;
+    }
+    .modal {
+        background: rgba(0,0,0,0.5);
+        
+    }
+    .modal-body{
+        position: relative;
+        margin: 10% auto;
+        max-width: 340px;
+
+    }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -167,16 +180,15 @@
                             <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
-                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4>
-                            <p class="text-muted text-capitalize"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></p>
+                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block">Çevrimiçi?</a>
+                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
+                                <a href="" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
@@ -184,28 +196,6 @@
                 </div>
             </div>
         </div><!-- /.panel -->
-
-        <div class="panel panel-theme rounded shadow">
-            <div class="panel-heading">
-                <div class="pull-left">
-                    <h3 class="panel-title">Contact</h3>
-                </div>
-                <div class="pull-right">
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <div class="clearfix"></div>
-            </div><!-- /.panel-heading -->
-            <div class="panel-body no-padding rounded">
-                <ul class="list-group no-margin">
-                    <li class="list-group-item"><i class="fa fa-envelope mr-5"></i> support@bootdey.com</li>
-                    <li class="list-group-item"><i class="fa fa-globe mr-5"></i> www.bootdey.com</li>
-                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i> +6281 903 xxx xxx</li>
-                </ul>
-            </div><!-- /.panel-body -->
-        </div><!-- /.panel -->
-
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
 
@@ -219,7 +209,7 @@
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                     <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                     <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
@@ -228,7 +218,7 @@
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                 <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
@@ -237,9 +227,11 @@
     </div><!-- /.profile-cover -->
     <div class="divider"></div>
     <div class="panel rounded shadow">
-        <form action="...">
-            <textarea class="form-control input-lg no-border" rows="2" placeholder="What are you doing?..."></textarea>
-        </form>
+        <form action="<?= base_url('dashboard/post')?>" method="post">
+            <?= csrf_field()?>
+            <textarea class="form-control input-lg no-border" rows="2" placeholder="Bugünlerde neler yapıyorsun?" name="textholder"></textarea>
+
+        
         <div class="panel-footer">
             <button class="btn btn-success pull-right mt-5">POST</button>
             <ul class="nav nav-pills">
@@ -247,133 +239,13 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
                 <li><a href="#"><i class="fa fa-camera"></i></a></li>
                 <li><a href="#"><i class="fa fa-smile-o"></i></a></li>
+                
             </ul><!-- /.nav nav-pills -->
         </div><!-- /.panel-footer -->
+        </form>
     </div><!-- /.panel -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-success rounded shadow">
-                <div class="panel-heading no-border">
-                    <div class="pull-left half">
-                        <div class="media">
-                            <div class="media-object pull-left">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..." class="img-circle img-post">
-                            </div>
-                            <div class="media-body">
-                                <a href="#" class="media-heading block mb-0 h4 text-white">John Doe</a>
-                                <span class="text-white h6">on 8th June, 2014</span>
-                            </div>
-                        </div>
-                    </div><!-- /.pull-left -->
-                    <div class="pull-right">
-                        <a href="#" class="text-white h4"><i class="fa fa-heart"></i> 15.5K</a>
-                    </div><!-- /.pull-right -->
-                    <div class="clearfix"></div>
-                </div><!-- /.panel-heading -->
-                <div class="panel-body no-padding">
-                    <img  src="https://via.placeholder.com/340x210/" alt="..." class="img-responsive full-width">
-                    <div class="inner-all block">
-                        view all <a href="#">7 comments</a>
-                    </div><!-- /.inner-all -->
-                    <div class="line no-margin"></div><!-- /.line -->
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left -->
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body -->
-                    </div><!-- /.media -->
-                    <div class="line no-margin"></div><!-- /.line -->
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left -->
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Quaerat, impedit minus non commodi facere doloribus nemo ea voluptate nesciunt deleniti.</small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body -->
-                    </div><!-- /.media -->
-                </div><!-- /.panel-body -->
-                <div class="panel-footer">
-                    <form action="#" class="form-horizontal">
-                        <div class="form-group has-feedback no-margin">
-                            <input class="form-control" type="text" placeholder="Your comment here...">
-                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                        </div>
-                    </form>
-                </div><!-- /.panel-footer -->
-            </div><!-- /.panel -->
+    <div class="mt-2">ARKADAŞ POSTLARI BURAYA GELECEK</div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-success rounded shadow">
-                <div class="panel-heading no-border">
-                    <div class="pull-left half">
-                        <div class="media">
-                            <div class="media-object pull-left">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." class="img-circle img-post">
-                            </div>
-                            <div class="media-body">
-                                <a href="#" class="media-heading block mb-0 h4 text-white">John Doe</a>
-                                <span class="text-white h6">on 8th June, 2014</span>
-                            </div>
-                        </div>
-                    </div><!-- /.pull-left -->
-                    <div class="pull-right">
-                        <a href="#" class="text-white h4"><i class="fa fa-heart"></i> 15.5K</a>
-                    </div><!-- /.pull-right -->
-                    <div class="clearfix"></div>
-                </div><!-- /.panel-heading -->
-                <div class="panel-body no-padding">
-                    <div class="inner-all block">
-                        <h4>Upload on my album :D</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, iste omnis fugiat porro consequuntur ratione iure error reprehenderit cum est ab similique magnam molestias aperiam voluptatibus quia aliquid! Sed, minima.
-                        </p>
-                        <blockquote class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, delectus!</blockquote>
-
-                        <img data-no-retina="" src="https://via.placeholder.com/340x210/" alt="..." width="100">
-                        <img data-no-retina="" src="https://via.placeholder.com/340x210/" alt="..." width="100">
-                        <img data-no-retina="" src="https://via.placeholder.com/340x210/" alt="..." width="100">
-                    </div><!-- /.inner-all -->
-                    <div class="inner-all bg-success">
-                        view all <a href="#">7 comments</a>
-                    </div>
-                </div><!-- /.panel-body -->
-                <div class="panel-footer no-padding no-border">
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left -->
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body -->
-                    </div><!-- /.media -->
-                    <div class="line no-margin"></div><!-- /.line -->
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left -->
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Quaerat, impedit minus non commodi facere doloribus nemo ea voluptate nesciunt deleniti.</small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body -->
-                    </div><!-- /.media -->
-                    <div class="line no-margin"></div><!-- /.line -->
-                    <form action="#" class="form-horizontal inner-all">
-                        <div class="form-group has-feedback no-margin">
-                            <input class="form-control" type="text" placeholder="Your comment here...">
-                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                        </div>
-                    </form><!-- /.form-horizontal -->
-                </div><!-- /.panel-footer -->
-            </div><!-- /.panel -->
         </div>
     </div>
     </div>

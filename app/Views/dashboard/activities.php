@@ -167,11 +167,10 @@
                             <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
-                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4>
-                            <p class="text-muted text-capitalize"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></p>
+                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block">Çevrimiçi?</a>
+                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
@@ -183,27 +182,6 @@
                     </ul>
                 </div>
             </div>
-        </div><!-- /.panel -->
-
-        <div class="panel panel-theme rounded shadow">
-            <div class="panel-heading">
-                <div class="pull-left">
-                    <h3 class="panel-title">Contact</h3>
-                </div>
-                <div class="pull-right">
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-google-plus"></i></a>
-                </div>
-                <div class="clearfix"></div>
-            </div><!-- /.panel-heading -->
-            <div class="panel-body no-padding rounded">
-                <ul class="list-group no-margin">
-                    <li class="list-group-item"><i class="fa fa-envelope mr-5"></i> support@bootdey.com</li>
-                    <li class="list-group-item"><i class="fa fa-globe mr-5"></i> www.bootdey.com</li>
-                    <li class="list-group-item"><i class="fa fa-phone mr-5"></i> +6281 903 xxx xxx</li>
-                </ul>
-            </div><!-- /.panel-body -->
         </div><!-- /.panel -->
 
     </div>
@@ -235,7 +213,9 @@
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->
-    ACTIVITIES PAGE
+    <div class="mt-5">
+    DİREKT BU SAYFAYI SİLİP YAPABİLİRSİN
+    </div>
     </div>
 </div>
 </body>
