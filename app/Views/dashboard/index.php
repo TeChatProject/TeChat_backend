@@ -244,7 +244,34 @@
         </div><!-- /.panel-footer -->
         </form>
     </div><!-- /.panel -->
-    <div class="mt-2">ARKADAŞ POSTLARI BURAYA GELECEK</div>
+    <div class="mt-2"></div>
+    <?php 
+                foreach($postInfo1 as $row) : ?>
+                    <div class="panel panel-success rounded shadow">
+                        <div class="panel-heading no-border">
+                        <div class="pull-left half">
+                            <div class="media">
+                                <div class="media-object pull-left">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
+                                </div>
+                                <div class="media-body w-100">
+                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $usersModel2->find($row['id'])['ad'].' '.$usersModel2->find($row['id'])['soyad'];?></a>
+                                    <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
+                                </div>
+                            </div>
+                        </div><!-- /.pull-left -->
+                        <div class="clearfix"></div>
+                    </div><!-- /.panel-heading -->
+                    <div class="panel-body no-padding">
+                        <div class="inner-all block">
+                            <h4><?=$row["icerik"]?></h4>
+                            
+                        </div><!-- /.media -->
+                        <div class="line no-margin"></div><!-- /.line -->
+                        <div class="line no-margin"></div><!-- /.line -->
+                    </div><!-- /.panel-footer -->
+                </div><!-- /.panel -->
+                <?php endforeach ?>
         </div>
         </div>
     </div>

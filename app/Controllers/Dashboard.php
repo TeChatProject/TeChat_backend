@@ -12,10 +12,13 @@ class Dashboard extends BaseController
         $loggedUserID = session()->get('loggedUser');
         $userInfo = $usersModel2->find($loggedUserID);
         $postInfo = $postModel->find($loggedUserID);
+        $postInfo1 = $postModel->findAll();
         $data = [
             'title'=>'Dashboard',
             'userInfo'=>$userInfo,
-            'postInfo'=>$postInfo
+            'postInfo'=>$postInfo,
+            'postInfo1'=>$postInfo1,
+            'usersModel2'=>$usersModel2
         ];
         
 		return view('dashboard/index', $data);
@@ -45,21 +48,26 @@ class Dashboard extends BaseController
         $loggedUserID = session()->get('loggedUser');
         $userInfo = $usersModel2->find($loggedUserID);
         $postInfo = $postModel->find($loggedUserID);
+        $postInfo1 = $postModel->findAll();
         $data = [
             'title'=>'Dashboard',
             'userInfo'=>$userInfo,
-            'postInfo'=>$postInfo
+            'postInfo'=>$postInfo,
+            'postInfo1'=>$postInfo1
         ];
         return view('dashboard/about',$data);
     }
     public function friends(){
         $usersModel1 = new \App\Models\UsersModel();
         $usersModel2 = new \App\Models\UsersInfo();
+        $friendsModel = new \App\Models\FriendModel();
         $loggedUserID = session()->get('loggedUser');
         $userInfo = $usersModel2->find($loggedUserID);
+        $findALL = $usersModel2->findAll();
         $data = [
             'title'=>'Dashboard',
-            'userInfo'=>$userInfo
+            'userInfo'=>$userInfo,
+            'findALL'=>$findALL
         ];
         return view('dashboard/friends',$data);
     }
@@ -73,6 +81,34 @@ class Dashboard extends BaseController
             'userInfo'=>$userInfo
         ];
         return view('dashboard/activities',$data);
+    }
+    public function req(){
+        $usersModel1 = new \App\Models\UsersModel();
+        $usersModel2 = new \App\Models\UsersInfo();
+        $friendsModel = new \App\Models\FriendModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $usersModel2->find($loggedUserID);
+        $findALL = $usersModel2->findAll();
+        $data = [
+            'title'=>'Dashboard',
+            'userInfo'=>$userInfo,
+            'findALL'=>$findALL
+        ];
+        return view('dashboard/friendrequest');
+    }
+    public function add(){
+        $usersModel1 = new \App\Models\UsersModel();
+        $usersModel2 = new \App\Models\UsersInfo();
+        $friendsModel = new \App\Models\FriendModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $usersModel2->find($loggedUserID);
+        $findALL = $usersModel2->findAll();
+        $data = [
+            'title'=>'Dashboard',
+            'userInfo'=>$userInfo,
+            'findALL'=>$findALL
+        ];
+        return view('dashboard/addfriends');
     }
     #kişi profili görüntüleme için kişinin numarasını al o numaradan bilgileri al bilgileri profiline göre çek
 }

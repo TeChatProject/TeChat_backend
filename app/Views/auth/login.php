@@ -169,7 +169,7 @@
     width: 600px;
     }
     </style>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="path/to/f ont-awesome/css/font-awesome.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -181,19 +181,44 @@
 <!-- Include the above in your HEAD tag -->
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfLTfYaAAAAAPius93aM4TbgfO0grNx3j-67agH"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LfLTfYaAAAAAPius93aM4TbgfO0grNx3j-67agH', {action: 'submit'}).then(function(token) {
+              var response = document.getElementById('token_response');
+              response.value = token;
+          });
+        });
+  </script>
+  <?php 
+    // if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['token_response'])){
+    //     $url='https://www.google.com/recaptcha/api/siteverify';
+    //     $secret='6LfLTfYaAAAAADDB-SXPh6XqudAZ0RbNFTkpMQbv';
+    //     $rec_resp = $_POST['token_response'];
+    //     $request = file_get_contents($url.'?secrep='.$secret.'&response='.$rec_resp);
+    //     $reponse = json_encode($request);
+
+    //     if($reponse->success==true && $reponse->score >= 0.5){
+    //         echo '<script>alert("YAY")</script>';
+    //     }
+    // }
+  
+  ?>
     <div class="main">
         <div class="container">
             <center>
             <div class="middle">
       <div id="login">
-
         <form action="<?= base_url('auth/check'); ?>" method="post">
             <?= csrf_field(); ?>
             <?php   if(!empty(session()->getFlashdata('fail'))) : ?>
                 <div class="alert alert-danger"><?= session()->getFlashdata('fail');?></div>
             <?php endif ?>
           <fieldset class="clearfix">
-
+                <input type="hidden" id="token_response" name="token_response">
             <p ><i class="fa fa-user" aria-hidden="true"></i><input type="text" name="email" Placeholder="E-posta" value="<?= set_value('email');?>" required></p>
             <span class="text-danger"><?= isset($validation) ? display_error($validation,'email') : ' ' ?></span> 
             <p><i class="fa fa-lock" aria-hidden="true"></i><input type="password" name="password" Placeholder="Şifre" value="<?= set_value('password');?>"required></p> 
