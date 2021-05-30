@@ -39,6 +39,10 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('/dashboard/friends','Dashboard::friends');
 	$routes->get('/dashboard/activities','Dashboard::activities');
 });
+$routes->group('',function($routes){
+	$routes->get('/dashboard/friends/add','Dashboard::add');
+	$routes->get('/dashboard/friends/req','Dashboard::req');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

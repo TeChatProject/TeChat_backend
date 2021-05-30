@@ -136,6 +136,72 @@
         width:50px;
         height:50px;
     }
+    /*
+    
+    
+     */
+    .table.table-profile th {
+    border: none;
+    color: #000;
+    padding-bottom: 0.3125rem;
+    padding-top: 0;
+}
+.table.table-profile td {
+    border-color: #c8c7cc;
+}
+.table.table-profile tbody + thead > tr > th {
+    padding-top: 1.5625rem;
+}
+.table.table-profile .field {
+    color: #666;
+    font-weight: 600;
+    width: 25%;
+    text-align: right;
+}
+.table.table-profile .value {
+    font-weight: 500;
+}
+
+.friend-list {
+    padding: 0;
+}
+.friend-list > li {
+    float: left;
+    width: 50%;
+}
+.friend-list > li > a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    padding: 0.625rem;
+    margin: 1px;
+    background: #fff;
+}
+.friend-list > li > a:after,
+.friend-list > li > a:before {
+    content: "";
+    display: table;
+    clear: both;
+}
+.friend-list .friend-img {
+    float: left;
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    background: #efeff4;
+}
+.friend-list .friend-info {
+    margin-left: 3.625rem;
+}
+.friend-list .friend-info h4 {
+    margin: 0.3125rem 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.friend-list .friend-info p {
+    color: #666;
+    margin: 0;
+}
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -175,7 +241,7 @@
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog pull-right"></i>Edit Account</a>
+                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
@@ -184,7 +250,6 @@
             </div>
         </div><!-- /.panel -->
 
-        
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
 
@@ -197,113 +262,49 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
-                    <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                    <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                        <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
+                        <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                        <li class="active"><a href=""><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                        <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
                 <img  src="https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
-            </div>
+            </div>  
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                <li class="active"><a href="<?= base_url('dashboard/friends')?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->
-    <!-- <div class="row mt-5 w-100 ">
-        <div class="col-md-8">
-            <div class="panel panel-success rounded shadow">
-                <div class="panel-heading no-border">
-                    <div class="pull-left half">
-                        <div class="media">
-                            <div class="media-object pull-left">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
-                            </div>
-                            <div class="media-body">
-                                <a href="#" class="media-heading block mb-0 h4 text-white"><?= $userInfo['ad']." ".$userInfo['soyad'];?></a>
-                                
-                                <span class="text-white h6">tarih yazılacak</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div><!-- /.panel-heading --
-                <div class="panel-body no-padding">
-                    <img  src="https://via.placeholder.com/340x210/" alt="..." class="img-responsive full-width">
-                    <div class="inner-all block">
-                        view all <a href="#">7 comments</a> 
-                    </div><!-- /.inner-all --
-                    <div class="line no-margin"></div><!-- /.line --
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left --
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body --
-                    </div><!-- /.media --
-                    <div class="line no-margin"></div><!-- /.line --
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left --
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Quaerat, impedit minus non commodi facere doloribus nemo ea voluptate nesciunt deleniti.</small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body --
-                    </div><!-- /.media --
-                </div><!-- /.panel-body --
-                <div class="panel-footer">
-                    <form action="#" class="form-horizontal">
-                        <div class="form-group has-feedback no-margin">
-                            <input class="form-control" type="text" placeholder="Your comment here...">
-                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                        </div>
-                    </form>
-                </div><!-- /.panel-footer --
-            </div><!-- /.panel --
-        </div> -->
-        <div class="mt-5 col-md-8">
-            <?php 
-                foreach($postInfo1 as $row) : 
-                     if($row['id']==$userInfo['id']){ ?>
-                    <div class="panel panel-success rounded shadow">
-                        <div class="panel-heading no-border">
-                        <div class="pull-left half">
-                            <div class="media">
-                                <div class="media-object pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
-                                </div>
-                                <div class="media-body w-100">
-                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $userInfo["ad"]." ".$userInfo["soyad"];?></a>
-                                    <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
-                                </div>
-                            </div>
-                        </div><!-- /.pull-left -->
-                        <div class="clearfix"></div>
-                    </div><!-- /.panel-heading -->
-                    <div class="panel-body no-padding">
-                        <div class="inner-all block">
-                            <h4><?=$row["icerik"]?></h4>
-                            
-                        </div><!-- /.media -->
-                        <div class="line no-margin"></div><!-- /.line -->
-                        <div class="line no-margin"></div><!-- /.line -->
-                    </div><!-- /.panel-footer -->
-                </div><!-- /.panel -->
-                <?php }endforeach ?>
+    <div class="profile-container">
+        <div class="row row-space-20">
+            <div class="col-md-8">
+                <ul class="w-100 list-inline">
+                    <a href="<?= base_url('dashboard/friends')?>"><li class="w-25 mx-auto list-inline-item">Arkadaşlar</a></li>
+                    <a href="<?= base_url('dashboard/friends/req')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş İsteklerime</a></li>
+                    <a href="<?= base_url('dashboard/friends/add')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş Ekle</a></li>
+                </ul>
+                <?php 
+                    
+                    foreach($findALL as $row){
+                        if(!($row['id']==$userInfo['id'])){
+                            echo $row['ad'].'  '.$row['soyad'];?>
+                            <button type="button" class="mx-5 btn btn-primary" value="<?= $row['id'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                        Arkadaş Ekle</button>                        
+                            <?php echo '<br>'; 
+                        } 
+                    }
                 
-            
-            
-            
+                ?>
+            </div>
         </div>
+    </div>
     </div>
     </div>
     </div>

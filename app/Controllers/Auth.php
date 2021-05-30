@@ -40,6 +40,7 @@ class Auth extends BaseController
         }else{
             $email = $this ->request->getPost('email');
             $password = $this->request->getPost('password');
+            $token_response = $this->request->getPost('token_response');
             $usersModel = new \App\Models\UsersModel();
             $user_info = $usersModel->where('email',$email)->first();
             if(!($password==$user_info['password'])){
@@ -50,6 +51,7 @@ class Auth extends BaseController
                 session()->set('loggedUser',$user_id);
                 return redirect()->to('/dashboard');
             }
+            
         }
     }
     public function logout(){
