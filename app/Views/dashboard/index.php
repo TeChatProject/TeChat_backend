@@ -183,7 +183,7 @@
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
@@ -209,7 +209,7 @@
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="<?=base_url("dashboard/profile/{$ogrno['ogrno']}");?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                     <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                     <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
@@ -218,7 +218,7 @@
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                <li><a href="<?php echo base_url('dashboard/profile/'.$ogrno['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                 <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
@@ -246,7 +246,14 @@
     </div><!-- /.panel -->
     <div class="mt-2"></div>
     <?php 
-                foreach($postInfo1 as $row) : ?>
+                
+                $rev_post = array_reverse($postInfo1);
+                foreach($rev_post as $row){
+                    $where = "(id= '".$userInfo['id']."' OR id = '".$row['id']."') AND (arkadas_id= '".$row['id']."' OR arkadas_id = '".$userInfo['id']."') AND (ark_durum= 'Bekliyor' OR ark_durum='Evet')";
+                    $whereother = $friendsModel->where($where)->find();
+                    $check = false;
+                    foreach($whereother as $vv){$check= true;}
+                    if($check){?>
                     <div class="panel panel-success rounded shadow">
                         <div class="panel-heading no-border">
                         <div class="pull-left half">
@@ -255,7 +262,7 @@
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
                                 </div>
                                 <div class="media-body w-100">
-                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $usersModel2->find($row['id'])['ad'].' '.$usersModel2->find($row['id'])['soyad'];?></a>
+                                    <a href="<?php echo base_url("dashboard/profile/".$usersModel2->find($row['id'])['ogrno'])?>" class="media-heading block mb-0 h4 text-secondary"><?= $usersModel2->find($row['id'])['ad'].' '.$usersModel2->find($row['id'])['soyad'];?></a>
                                     <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
                                 </div>
                             </div>
@@ -271,7 +278,7 @@
                         <div class="line no-margin"></div><!-- /.line -->
                     </div><!-- /.panel-footer -->
                 </div><!-- /.panel -->
-                <?php endforeach ?>
+                <?php } }?>
         </div>
         </div>
     </div>

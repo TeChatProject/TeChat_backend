@@ -236,8 +236,8 @@
         <div class="clearfix"></div>
 
       </div> <!-- end login -->
-      <!-- <div class="logo"><img src="" height="70%" width="50%"> -->
-          
+        <!--<div class="logo"><img src="<?= base_url()?>/images/btulogo.jpg" height="70%" width="50%"> 
+          -->
           <div class="clearfix"></div>
       </div>
       

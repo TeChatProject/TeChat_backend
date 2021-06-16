@@ -202,6 +202,69 @@
     color: #666;
     margin: 0;
 }
+
+
+
+
+
+
+
+
+
+/*==================================================
+  Nearby People CSS
+  ==================================================*/
+
+.people-nearby .google-maps{
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: 1px solid #f1f2f2;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.people-nearby .google-maps .map{
+  height: 300px;
+  width: 100%;
+  border: none;
+}
+
+.people-nearby .nearby-user{
+  padding: 20px 0;
+  border-top: 1px solid #f1f2f2;
+  border-bottom: 1px solid #f1f2f2;
+  margin-bottom: 20px;
+}
+
+img.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+.butNew {
+  background-color: #428bca;
+  border: none;
+  color: white;
+  padding: 1% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -233,10 +296,10 @@
                             <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
-                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
+                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad']?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"?></a>
                         </li>
                         <li><br></li>
                         <li>
@@ -281,14 +344,63 @@
     </div><!-- /.profile-cover -->
     <div class="profile-container">
         <div class="row row-space-20">
-            <div class="col-md-8">
-                <ul class="w-100 list-inline">
-                    <a href="<?= base_url('dashboard/friends')?>"><li class="w-25 mx-auto list-inline-item">Arkadaşlar</a></li>
-                    <a href="<?= base_url('dashboard/friends/req')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş İsteklerime</a></li>
-                    <a href="<?= base_url('dashboard/friends/add')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş Ekle</a></li>
+            <div class="col-md-12">
+                <ul class="mx-5 w-80 list-inline">
+                    <a href="<?= base_url('dashboard/friends/')?>" class="butNew" >Arkadaşlar</a>
+                    <a href="<?= base_url('dashboard/friends/req')?>" class="butNew">Arkadaş İstekleri</a>
+                    <a href="<?= base_url('dashboard/friends/add')?>" class="butNew">Arkadaş Ekle</a>
                 </ul>
+            </div>
+        </div> 
+
+                <div class="container">
+    <div class="row">
+        <div class="mx-5 col-md-8">
+            <div class="people-nearby">
+          <form action="">
+          <?php foreach($findFriends as $row){
+             if($row['arkadas_id']==$userInfo['id'] && $row['ark_durum']=='Bekliyor'){?>
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                      <h5><a href="#" class="profile-link"><?= $usersModel2->find($row['id'])['ad'].'  '.$usersModel2->find($row['id'])['soyad'];?></a></h5>
+                      <p><?=  $usersModel2->find($row['id'])['bolum']." ". $usersModel2->find($row['id'])['sinif'].". Sınıf"?></p>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <button class="btn btn-primary pull-right" name="button1" type="submit" value="1 <?=$row['id']?>" formaction="<?= base_url("dashboard/friends/reqaction")?>" formmethod="post"onmouseover="this.style.backgroundColor = '#AF0000';" onmouseout="this.style.backgroundColor = '#428BCA'">Reddet</button>
+                    <button class="btn btn-primary pull-left" name="button1" type="submit" value="3 <?=$row['id']?>" formaction="<?= base_url("dashboard/friends/reqaction")?>" formmethod="post"onmouseover="this.style.backgroundColor = '#35E53B';" onmouseout="this.style.backgroundColor = '#428BCA'">Kabul Et</button>
+                  </div>
+
+                </div>
+              </div>
+              <?php
+          }
+        }
+          ?>
+
+              
+          </form>
+            </div>
+    	</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
                 <?php 
-                    
+                    /*
                     foreach($findALL as $row){
                         if(!($row['id']==$userInfo['id'])){
                             echo $row['ad'].'  '.$row['soyad'];?>
@@ -300,8 +412,11 @@
                             <?php echo '<br>'; 
                         } 
                     }
-                
+                */
                 ?>
+
+
+
             </div>
         </div>
     </div>

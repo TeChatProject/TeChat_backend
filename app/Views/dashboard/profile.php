@@ -167,10 +167,10 @@
                             <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
-                            <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
+                            <h4 class="text-capitalize"><?= $findUserID['ad']." ".$findUserID['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $findUserID['bolum']." ".$findUserID['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
@@ -199,7 +199,8 @@
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
                     <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$findUserID['id']} OR arkadas_id = {$findUserID['id']}) AND ark_durum = 'Evet'";
+                    echo count($friendsModel->where($wheres)->findAll())?>)</small></a></li>
                     <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
@@ -208,7 +209,8 @@
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
                 <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$findUserID['id']} OR arkadas_id = {$findUserID['id']}) AND ark_durum = 'Evet'";
+                    echo count($friendsModel->where($wheres)->findAll())?>)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
             </ul>
@@ -272,8 +274,9 @@
         </div> -->
         <div class="mt-5 col-md-8">
             <?php 
-                foreach($postInfo1 as $row) : 
-                     if($row['id']==$userInfo['id']){ ?>
+                $rev_post = array_reverse($postInfo1);
+                foreach($rev_post as $row) : 
+                     if($row['id']==$findUserID['id']){ ?>
                     <div class="panel panel-success rounded shadow">
                         <div class="panel-heading no-border">
                         <div class="pull-left half">
@@ -282,7 +285,7 @@
                                     <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
                                 </div>
                                 <div class="media-body w-100">
-                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $userInfo["ad"]." ".$userInfo["soyad"];?></a>
+                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $findUserID["ad"]." ".$findUserID["soyad"];?></a>
                                     <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
                                 </div>
                             </div>

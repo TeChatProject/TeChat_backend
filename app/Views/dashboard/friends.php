@@ -202,6 +202,56 @@
     color: #666;
     margin: 0;
 }
+
+
+/*
+    Arkadaslar Kismi
+*/
+
+
+.people-nearby .google-maps{
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: 1px solid #f1f2f2;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.people-nearby .google-maps .map{
+  height: 300px;
+  width: 100%;
+  border: none;
+}
+
+.people-nearby .nearby-user{
+  padding: 20px 0;
+  border-top: 1px solid #f1f2f2;
+  border-bottom: 1px solid #f1f2f2;
+  margin-bottom: 20px;
+}
+
+img.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+
+
+.butNew {
+  background-color: #428bca;
+  border: none;
+  color: white;
+  padding: 1% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
+
+
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -236,7 +286,7 @@
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
@@ -263,8 +313,8 @@
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                         <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                        <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                        <li class="active"><a href=""><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                        <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                        <li class="active"><a href=""><i class="fa fa-fw fa-users"></i><span> Friends </span><small>32</small></a></li>
                         <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
@@ -272,7 +322,7 @@
             </div>  
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                 <li class="active"><a href="<?= base_url('dashboard/friends')?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
@@ -281,14 +331,62 @@
     </div><!-- /.profile-cover -->
     <div class="profile-container">
         <div class="row row-space-20">
-            <div class="col-md-8">
-                <ul class="w-100 list-inline">
-                    <a href="<?= base_url('dashboard/friends')?>"><li class="w-25 mx-auto list-inline-item">Arkadaşlar</a></li>
-                    <a href="<?= base_url('dashboard/friends/req')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş İstekleri</a></li>
-                    <a href="<?= base_url('dashboard/friends/add')?>"><li class="w-25 mx-auto list-inline-item">Arkadaş Ekle</a></li>
+            <div class="col-md-12">
+                <ul class="mx-5 w-80 list-inline">
+                    <a href="<?= base_url('dashboard/friends/')?>" class="butNew" >Arkadaşlar</a>
+                    <a href="<?= base_url('dashboard/friends/req')?>" class="butNew">Arkadaş İstekleri</a>
+                    <a href="<?= base_url('dashboard/friends/add')?>" class="butNew">Arkadaş Ekle</a>
                 </ul>
+            </div>
+        </div>    
+
+<!--
+    Arkadaslar
+-->
+<form action="">
+    <div class="container">
+    <div class="row">
+        <div class="mx-5 col-md-8">
+            <div class="people-nearby">
+              
+            <?php 
+            
+            foreach($findALL as $row){
+                $where = "(id= '".$userInfo['id']."' OR id = '".$row['id']."') AND (arkadas_id= '".$row['id']."' OR arkadas_id = '".$userInfo['id']."') AND ark_durum='Evet'";   
+                $whereother = $friendsModel->where($where)->find();
+                $check = false;
+                foreach($whereother as $vv){$check = true;}
+             if($row['id']!=$userInfo['id'] && $check){
+                 ?>
+             
+              <div class="nearby-user">
+                <div class="row">
+                  <div class="col-md-2 col-sm-2">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                  </div>
+                  <div class="col-md-7 col-sm-7">
+                      <h5><a href="#" class="profile-link"><?= $row['ad'].'  '.$row['soyad'];?></a></h5>
+                      <p><?= $row['bolum']." ". $row['sinif'].". Sınıf"?></p>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <button name="button1" type="submit" class="btn btn-primary pull-right" value="1 <?=$row['id']?>" formaction="<?= base_url("dashboard/friends/reqaction")?>" formmethod="post" onmouseover="this.innerHTML = 'Arkadaşlıktan Çıkar'; this.style.backgroundColor = '#AF0000';" onmouseout="this.innerHTML = 'Arkadaşsınız'; this.style.backgroundColor = '#428BCA'">Arkadaşsınız</button>
+                  </div>
+                </div>
+              </div>
+              <?php
+          }
+        }
+          ?>
+            </form>
+            </div>
+    	</div>
+	</div>
+</div>
+
+
                 <?php 
-                    
+
+                    /*
                     foreach($findALL as $row){
                         if(!($row['id']==$userInfo['id'])){
                             echo $row['ad'].'  '.$row['soyad'];?>
@@ -300,8 +398,10 @@
                             <?php echo '<br>'; 
                         } 
                     }
-                
+                */
+
                 ?>
+                
             </div>
         </div>
     </div>

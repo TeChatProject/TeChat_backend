@@ -136,123 +136,6 @@
         width:50px;
         height:50px;
     }
-    /*
-    
-    
-     */
-    .table.table-profile th {
-    border: none;
-    color: #000;
-    padding-bottom: 0.3125rem;
-    padding-top: 0;
-}
-.table.table-profile td {
-    border-color: #c8c7cc;
-}
-.table.table-profile tbody + thead > tr > th {
-    padding-top: 1.5625rem;
-}
-.table.table-profile .field {
-    color: #666;
-    font-weight: 600;
-    width: 25%;
-    text-align: right;
-}
-.table.table-profile .value {
-    font-weight: 500;
-}
-
-.friend-list {
-    padding: 0;
-}
-.friend-list > li {
-    float: left;
-    width: 50%;
-}
-.friend-list > li > a {
-    display: block;
-    text-decoration: none;
-    color: #000;
-    padding: 0.625rem;
-    margin: 1px;
-    background: #fff;
-}
-.friend-list > li > a:after,
-.friend-list > li > a:before {
-    content: "";
-    display: table;
-    clear: both;
-}
-.friend-list .friend-img {
-    float: left;
-    width: 3rem;
-    height: 3rem;
-    overflow: hidden;
-    background: #efeff4;
-}
-.friend-list .friend-info {
-    margin-left: 3.625rem;
-}
-.friend-list .friend-info h4 {
-    margin: 0.3125rem 0;
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-.friend-list .friend-info p {
-    color: #666;
-    margin: 0;
-}
-
-
-
-/*
-    Arkadas Ekleme
-*/
-
-
-.people-nearby .google-maps{
-  background: #f8f8f8;
-  border-radius: 4px;
-  border: 1px solid #f1f2f2;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.people-nearby .google-maps .map{
-  height: 300px;
-  width: 100%;
-  border: none;
-}
-
-.people-nearby .nearby-user{
-  padding: 20px 0;
-  border-top: 1px solid #f1f2f2;
-  border-bottom: 1px solid #f1f2f2;
-  margin-bottom: 20px;
-}
-
-img.profile-photo-lg{
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-}
-
-
-
-.butNew {
-  background-color: #428bca;
-  border: none;
-  color: white;
-  padding: 1% 10%;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-
-
-
-
-
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -287,12 +170,12 @@ img.profile-photo-lg{
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
+                                <a href="" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
@@ -301,6 +184,7 @@ img.profile-photo-lg{
             </div>
         </div><!-- /.panel -->
 
+        
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
 
@@ -313,99 +197,114 @@ img.profile-photo-lg{
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
-                        <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                        <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                        <li class="active"><a href=""><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                        <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                    <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
+                    <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                    <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
                 <img  src="https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
-            </div>  
+            </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li><a href="<?= base_url('dashboard/profile/{}'); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li class="active"><a href="<?= base_url('dashboard/friends')?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->
-    <div class="profile-container">
-        <div class="row row-space-20">
-            <div class="col-md-12">
-                <ul class="mx-5 w-80 list-inline">
-                    <a href="<?= base_url('dashboard/friends/')?>" class="butNew" >Arkadaşlar</a>
-                    <a href="<?= base_url('dashboard/friends/req')?>" class="butNew">Arkadaş İstekleri</a>
-                    <a href="<?= base_url('dashboard/friends/add')?>" class="butNew">Arkadaş Ekle</a>
-                </ul>
-            </div>
-        </div>   
-    </div>
-
-
-
-<!--
-    Arkadaslar Ekleme
--->
-
-    <div class="container">
-    <div class="row">
-        <div class="mx-5 col-md-8">
-            
-    	    </div>
-	    </div>
-      <div class="col-md-6 mb-3 pull-right">
-      Ara: <input type="text" id="arama" class="">
-      </div>
-</div>
-
-<form action="" >
-<?php 
-                    
-                    //$fALL_reverse = array_reverse($findALL);
-                    foreach($findALL as $row){
-                        $where = "(id= '".$userInfo['id']."' OR id = '".$row['id']."') AND (arkadas_id= '".$row['id']."' OR arkadas_id = '".$userInfo['id']."') AND (ark_durum= 'Bekliyor' OR ark_durum='Evet')";
-                        
-                        $whereother = $friendsModel->where($where)->find();
-                        $check = true;
-                        foreach($whereother as $vv){$check= false;}
-                        if($row['id']!=$userInfo['id'] && $check){
-                            ?>
-                            <div class="people-nearby">
-                              <div class="nearby-user">
-                                <div class="row">
-                                  <div class="col-md-2 col-sm-2">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
-                                  </div>
-                                  <div class="col-md-7 col-sm-7">
-                                    <h5><a href="#" class="profile-link"><?= $row['ad'].'  '.$row['soyad'];?></a></h5>
-                                    <p><?= $row['bolum']." ".$row['sinif'].". Sınıf"?></p>
-                                  </div>
-                                  <div class="col-md-3 col-sm-3">
-                                  
-                                      <button name="button"   type="submit" class="btn btn-primary pull-right" formaction="<?= base_url("dashboard/friends/addaction")?>" formmethod="post" value="<?= $row['id'] ?>" onmouseover="this.style.backgroundColor = '#35E53B';" onmouseout="this.style.backgroundColor = '#428BCA'">Add Friend</button>
-                                  </div>
+    <!-- <div class="row mt-5 w-100 ">
+        <div class="col-md-8">
+            <div class="panel panel-success rounded shadow">
+                <div class="panel-heading no-border">
+                    <div class="pull-left half">
+                        <div class="media">
+                            <div class="media-object pull-left">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
+                            </div>
+                            <div class="media-body">
+                                <a href="#" class="media-heading block mb-0 h4 text-white"><?= $userInfo['ad']." ".$userInfo['soyad'];?></a>
+                                
+                                <span class="text-white h6">tarih yazılacak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div><!-- /.panel-heading --
+                <div class="panel-body no-padding">
+                    <img  src="https://via.placeholder.com/340x210/" alt="..." class="img-responsive full-width">
+                    <div class="inner-all block">
+                        view all <a href="#">7 comments</a> 
+                    </div><!-- /.inner-all --
+                    <div class="line no-margin"></div><!-- /.line --
+                    <div class="media inner-all no-margin">
+                        <div class="pull-left">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
+                        </div><!-- /.pull-left --
+                        <div class="media-body">
+                            <a href="#" class="h4">John Doe</a>
+                            <small class="block text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </small>
+                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
+                        </div><!-- /.media-body --
+                    </div><!-- /.media --
+                    <div class="line no-margin"></div><!-- /.line --
+                    <div class="media inner-all no-margin">
+                        <div class="pull-left">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
+                        </div><!-- /.pull-left --
+                        <div class="media-body">
+                            <a href="#" class="h4">John Doe</a>
+                            <small class="block text-muted">Quaerat, impedit minus non commodi facere doloribus nemo ea voluptate nesciunt deleniti.</small>
+                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
+                        </div><!-- /.media-body --
+                    </div><!-- /.media --
+                </div><!-- /.panel-body --
+                <div class="panel-footer">
+                    <form action="#" class="form-horizontal">
+                        <div class="form-group has-feedback no-margin">
+                            <input class="form-control" type="text" placeholder="Your comment here...">
+                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
+                        </div>
+                    </form>
+                </div><!-- /.panel-footer --
+            </div><!-- /.panel --
+        </div> -->
+        <div class="mt-5 col-md-8">
+            <?php 
+                $rev_post = array_reverse($postInfo1);
+                foreach($rev_post as $row) : 
+                     if($row['id']==$userInfo['id']){ ?>
+                    <div class="panel panel-success rounded shadow">
+                        <div class="panel-heading no-border">
+                        <div class="pull-left half">
+                            <div class="media">
+                                <div class="media-object pull-left">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
                                 </div>
-                              </div>
-                            </div>                      
-                            <?php echo '<br>'; 
-                        } 
-                        
-                     
-                    }
-
-                ?>
-          </form>      
+                                <div class="media-body w-100">
+                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $userInfo["ad"]." ".$userInfo["soyad"];?></a>
+                                    <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
+                                </div>
+                            </div>
+                        </div><!-- /.pull-left -->
+                        <div class="clearfix"></div>
+                    </div><!-- /.panel-heading -->
+                    <div class="panel-body no-padding">
+                        <div class="inner-all block">
+                            <h4><?=$row["icerik"]?></h4>
+                            
+                        </div><!-- /.media -->
+                        <div class="line no-margin"></div><!-- /.line -->
+                        <div class="line no-margin"></div><!-- /.line -->
+                    </div><!-- /.panel-footer -->
+                </div><!-- /.panel -->
+                <?php }endforeach ?>
                 
-    <?php
-      function insertreq(){
-
-      } 
-    ?>
-
-
-
-
+            
+            
+            
+        </div>
     </div>
     </div>
     </div>

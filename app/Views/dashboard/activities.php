@@ -197,7 +197,7 @@
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                     <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                     <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
@@ -206,7 +206,7 @@
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
             <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                     <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                     <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                 
