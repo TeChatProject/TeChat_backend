@@ -1,5 +1,5 @@
-<?= view('frontend/activities')?>
-    <div class="mt-5">
+<?= view("frontend/activities")?>
+<div class="mt-5">
     <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <div class="career-search mb-60">
@@ -152,19 +152,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     </div>
     </div>
 </div>
 </body>
 </html>
+    

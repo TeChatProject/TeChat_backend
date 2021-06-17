@@ -215,7 +215,6 @@ class Dashboard extends BaseController
             'ppPath'=>$newName
         ];
         $query = $usersModel->update($where,$value);
-        print_r($where);
-        //return redirect()->to('/dashboard');
+        return redirect()->to('/dashboard');
     }
 }
