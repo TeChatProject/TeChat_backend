@@ -23,7 +23,6 @@ class Dashboard extends BaseController
             'usersModel2'=>$usersModel2,
             'friendsModel'=>$friendsModel,
             'ogrno' => $ogrno
-
         ];
 		return view('dashboard/index', $data);
 	}
@@ -33,10 +32,21 @@ class Dashboard extends BaseController
         $loggedUserID = session()->get('loggedUser');
         $userInfo = $usersModel2->find($loggedUserID);
         $icerik = $this->request->getPost('textholder');
+        $file = $this->request->getFile('image');
+        $konum="";
+        $konum = $this->request->getPost('konum');
+        if ($file->isValid() && ! $file->hasMoved())
+        {
+            $newName = $file->getRandomName();
+            $file->move('images/',$newName);
+        }else{
+            $newName=""; 
+        }
         $arr = [
             'id'=>$userInfo['id'],
-            'photo'=>'',
-            'icerik'=>$icerik
+            'photo'=>$newName,
+            'icerik'=>$icerik,
+            'konum'=>$konum
         ];
         $postModel = new \App\Models\PostModel();
         $query = $postModel->insert($arr);
@@ -56,6 +66,7 @@ class Dashboard extends BaseController
         $postInfo = $postModel->find($findUserID);
         $postInfo1 = $postModel->findAll();
         $profileInfo = $usersModel2->findAll();
+        $loggedUser = $usersModel2->find($loggedUserID);
         
         $data = [
             'title'=>'Dashboard',
@@ -64,10 +75,10 @@ class Dashboard extends BaseController
             'postInfo1'=>$postInfo1,
             'profileInfo'=>$profileInfo,
             'findUserID'=>$findUserID,
-            'friendsModel'=>$friendsModel
+            'friendsModel'=>$friendsModel,
+            'loggedUserID'=>$loggedUserID,
+            'loggedUser'=>$loggedUser
         ];
-        //return view('dashboard/profile',$data);
-    
         $isIn = false;
         foreach($profileInfo as $vv){
             if($ogrno == $vv['ogrno']){
@@ -136,7 +147,6 @@ class Dashboard extends BaseController
         $userInfo = $usersModel2->find($loggedUserID);
         $findALL = $usersModel2->findAll();
         $friendsreq = $friendsModel->where($loggedUserID)->findAll();
-        //$MyFriendsReq = $friendsModel->where('id',$loggedUserID,'ark_durum','Bekliyor')->findAll();
         $data = [
             'title'=>'Dashboard',
             'userInfo'=>$userInfo,
@@ -165,7 +175,6 @@ class Dashboard extends BaseController
         }else{
             $query = $friendsModel->insert($values);
         }
-        //$query = $friendsModel ->insert($values);
         return redirect()->to('/dashboard/friends/add');
     }
     public function reqaction(){
@@ -184,21 +193,29 @@ class Dashboard extends BaseController
         $query = $friendsModel ->update($wheres,$values);
         return redirect()->to('/dashboard/friends');
     }
-    public function profilep(){
+    public function pp(){
+        $image = \Config\Services::image();
         $usersModel1 = new \App\Models\UsersModel();
-        $usersModel2 = new \App\Models\UsersInfo();
-        $postModel = new \App\Models\PostModel();
+        $usersModel = new \App\Models\UsersInfo();
         $loggedUserID = session()->get('loggedUser');
-        $userInfo = $usersModel2->find($loggedUserID);
-        $postInfo = $postModel->find($loggedUserID);
-        $postInfo1 = $postModel->findAll();
-        $data = [
-            'title'=>'Dashboard',
-            'userInfo'=>$userInfo,
-            'postInfo'=>$postInfo,
-            'postInfo1'=>$postInfo1
+        $file = $this->request->getFile('ppFile');
+        $userInfo = $usersModel->find($loggedUserID);
+        $image = service('image');
+        if ($file->isValid() && ! $file->hasMoved())
+        {
+            $newName = $file->getRandomName();
+            $file->move('profilepic/',$newName);
+            $image->withFile("./profilepic/{$newName}")
+            ->fit(315,315,'center')->save("./profilepic/{$newName}");
+        }else{
+            $newName=""; 
+        }
+        $where = $usersModel->find($loggedUserID);
+        $value = [
+            'ppPath'=>$newName
         ];
-        return view('dashboard/profile',$data);
+        $query = $usersModel->update($where,$value);
+        print_r($where);
+        //return redirect()->to('/dashboard');
     }
-    #kişi profili görüntüleme için kişinin numarasını al o numaradan bilgileri al bilgileri profiline göre çek
 }

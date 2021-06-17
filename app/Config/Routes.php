@@ -38,6 +38,8 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('/dashboard/profile/(:num)','Dashboard::profile/$1');
 	$routes->get('/dashboard/friends','Dashboard::friends');
 	$routes->get('/dashboard/activities','Dashboard::activities');
+	$routes->post('/dashboard/post','Dashboard::post');
+	$routes->post('/dashboard/pp','Dashboard::pp');
 });
 $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('dashboard/friends/add','Dashboard::add');
@@ -45,6 +47,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->post('dashboard/friends/addaction','Dashboard::addaction');
 	$routes->post('dashboard/friends/reqaction','Dashboard::reqaction');
 });
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

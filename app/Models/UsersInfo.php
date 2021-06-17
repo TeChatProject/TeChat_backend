@@ -8,7 +8,7 @@ class UsersInfo extends Model
 {
     protected $table = 'users_info';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['ad','soyad','ogrno','bolum','sinif'];
+    protected $allowedFields = ['ad','soyad','ogrno','bolum','sinif','ppPath','cinsiyet'];
 }
 
 ?>

@@ -153,9 +153,9 @@
 <!-- Include the above in your HEAD tag -->
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdeys">
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-4">
@@ -175,19 +175,16 @@
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div><!-- /.panel -->
+        </div>
 
-        
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
-
     <div class="profile-cover">
         <div class="cover rounded shadow no-overflow">
             <div class="inner-cover">
@@ -198,116 +195,19 @@
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                    <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                    <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
                 <img  src="https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
-                <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li class="active"><a href=""><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
-                
+            <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                    <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->
-    <!-- <div class="row mt-5 w-100 ">
-        <div class="col-md-8">
-            <div class="panel panel-success rounded shadow">
-                <div class="panel-heading no-border">
-                    <div class="pull-left half">
-                        <div class="media">
-                            <div class="media-object pull-left">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
-                            </div>
-                            <div class="media-body">
-                                <a href="#" class="media-heading block mb-0 h4 text-white"><?= $userInfo['ad']." ".$userInfo['soyad'];?></a>
-                                
-                                <span class="text-white h6">tarih yazılacak</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div><!-- /.panel-heading --
-                <div class="panel-body no-padding">
-                    <img  src="https://via.placeholder.com/340x210/" alt="..." class="img-responsive full-width">
-                    <div class="inner-all block">
-                        view all <a href="#">7 comments</a> 
-                    </div><!-- /.inner-all --
-                    <div class="line no-margin"></div><!-- /.line --
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left --
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body --
-                    </div><!-- /.media --
-                    <div class="line no-margin"></div><!-- /.line --
-                    <div class="media inner-all no-margin">
-                        <div class="pull-left">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-post2">
-                        </div><!-- /.pull-left --
-                        <div class="media-body">
-                            <a href="#" class="h4">John Doe</a>
-                            <small class="block text-muted">Quaerat, impedit minus non commodi facere doloribus nemo ea voluptate nesciunt deleniti.</small>
-                            <em class="text-xs text-muted">Posted on <span class="text-danger">Dec 08, 2014</span></em>
-                        </div><!-- /.media-body --
-                    </div><!-- /.media --
-                </div><!-- /.panel-body --
-                <div class="panel-footer">
-                    <form action="#" class="form-horizontal">
-                        <div class="form-group has-feedback no-margin">
-                            <input class="form-control" type="text" placeholder="Your comment here...">
-                            <button type="submit" class="btn btn-theme fa fa-search form-control-feedback"></button>
-                        </div>
-                    </form>
-                </div><!-- /.panel-footer --
-            </div><!-- /.panel --
-        </div> -->
-        <div class="mt-5 col-md-8">
-            <?php 
-                $rev_post = array_reverse($postInfo1);
-                foreach($rev_post as $row) : 
-                     if($row['id']==$userInfo['id']){ ?>
-                    <div class="panel panel-success rounded shadow">
-                        <div class="panel-heading no-border">
-                        <div class="pull-left half">
-                            <div class="media">
-                                <div class="media-object pull-left">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
-                                </div>
-                                <div class="media-body w-100">
-                                    <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $userInfo["ad"]." ".$userInfo["soyad"];?></a>
-                                    <span><div class="float-end h5 text-primary"><?= $row["date"]?></div></span>
-                                </div>
-                            </div>
-                        </div><!-- /.pull-left -->
-                        <div class="clearfix"></div>
-                    </div><!-- /.panel-heading -->
-                    <div class="panel-body no-padding">
-                        <div class="inner-all block">
-                            <h4><?=$row["icerik"]?></h4>
-                            
-                        </div><!-- /.media -->
-                        <div class="line no-margin"></div><!-- /.line -->
-                        <div class="line no-margin"></div><!-- /.line -->
-                    </div><!-- /.panel-footer -->
-                </div><!-- /.panel -->
-                <?php }endforeach ?>
-                
-            
-            
-            
-        </div>
-    </div>
-    </div>
-    </div>
-</div>
-</body>
-</html>
+    </body>
