@@ -21,7 +21,7 @@
               <div class="nearby-user">
                 <div class="row">
                   <div class="col-md-2 col-sm-2">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+                    <img src="<?=base_url($row['ppPath'])?>" alt="user" class="profile-photo-lg">
                   </div>
                   <div class="col-md-7 col-sm-7">
                       <h5><a href="<?= base_url("dashboard/profile/{$row['ogrno']}")?>" class="profile-link"><?= $row['ad'].'  '.$row['soyad'];?></a></h5>

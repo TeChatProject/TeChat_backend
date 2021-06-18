@@ -9,7 +9,7 @@
             <div class="pull-left half">
                 <div class="media">
                     <div class="media-object pull-left">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..." class="img-circle img-post">
+                        <img src="<?=base_url($findUserID["ppPath"])?>" alt="..." class="img-circle img-post">
                     </div>
                     <div class="media-body w-100">
                     <a href="#" class="media-heading block mb-0 h4 text-secondary"><?= $findUserID["ad"]." ".$findUserID["soyad"];?></a>

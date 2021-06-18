@@ -124,7 +124,8 @@ class Dashboard extends BaseController
             'userInfo'=>$userInfo,
             'usersModel2'=>$usersModel2,
             'findALL'=>$findALL,
-            'findFriends'=>$findFriends
+            'findFriends'=>$findFriends,
+            'friendsModel'=>$friendsModel
         ];
         return view('dashboard/friendrequest',$data);
     }
@@ -173,13 +174,13 @@ class Dashboard extends BaseController
         $loggedUserID = session()->get('loggedUser');
         $buttonx = $this->request->getPost('button1');
         $bttn = explode(" ",$buttonx);
-        $wheres = $friendsModel->where('id',$bttn[1])->where('arkadas_id',$loggedUserID)->find($bttn[1]);
+        $wheres = $friendsModel->where('id',$bttn[1])->where('arkadas_id',$loggedUserID)->first();
         $values = [
             'id' => $bttn[1],
             'arkadas_id' => $loggedUserID,
             'ark_durum' => $bttn[0]
         ];
-        $query = $friendsModel ->update($wheres,$values);
+        $query = $friendsModel->update($wheres,$values);
         return redirect()->to('/dashboard/friends');
     }
     public function pp(){
@@ -201,7 +202,7 @@ class Dashboard extends BaseController
         }
         $where = $usersModel->find($loggedUserID);
         $value = [
-            'ppPath'=>$newName
+            'ppPath'=>"/profilepic/{$newName}"
         ];
         $query = $usersModel->update($where,$value);
         return redirect()->to('/dashboard');
@@ -250,7 +251,8 @@ class Dashboard extends BaseController
         $activitiesModel = new \App\Models\ActivitiesModel();
         $aktivite = $this->request->getPost('aktiviteid');
         $act_ids = $this->request->getPost('myId');
-        $query = $activitiesModel->set('act_persons',"{$act_ids},")->where('act_id',$aktivite)->update();
+        $act_person = $activitiesModel->where('act_id',$aktivite)->first();
+        $query = $activitiesModel->set('act_persons',"{$act_person['act_persons']},{$act_ids}")->where('act_id',$aktivite)->update();
         return redirect()->to('/dashboard/activities');
     }
     public function places(){

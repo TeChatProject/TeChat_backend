@@ -183,7 +183,7 @@
                     <ul class="list-unstyled">
                         <li class="text-center">
                             <?php if($userInfo['ppPath']==''):?>
-                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="<?= $userInfo['ad']." ".$userInfo['soyad']?>">
+                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="<?=base_url("{$userInfo['ppPath']}")?>" alt="<?= $userInfo['ad']." ".$userInfo['soyad']?>">
                             <?php else: ?>
                                 <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="<?=base_url("{$userInfo['ppPath']}")?>" alt="<?= $userInfo['ad']." ".$userInfo['soyad']?>">
                             <?php endif;?>

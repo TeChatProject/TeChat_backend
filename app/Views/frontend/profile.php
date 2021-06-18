@@ -169,7 +169,7 @@
                 <div class="inner-all">
                     <ul class="list-unstyled">
                         <li class="text-center">
-                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
+                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="<?=base_url("{$findUserID['ppPath']}")?>" alt="<?= $findUserID['ad']." ".$findUserID['soyad']?>">
                         </li>
                         <li class="text-center">
                             <h4 class="text-capitalize"><?= $findUserID['ad']." ".$findUserID['soyad'];?></h4><br>
