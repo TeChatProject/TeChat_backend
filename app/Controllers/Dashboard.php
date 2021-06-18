@@ -258,16 +258,38 @@ class Dashboard extends BaseController
         $usersModel2 = new \App\Models\UsersInfo();
         $activitiesModel = new \App\Models\ActivitiesModel();
         $friendsModel = new \App\Models\FriendModel();
+        $comments = new \App\Models\CommentsModel();
+        $places = new \App\Models\PlacesModel();
         $loggedUserID = session()->get('loggedUser');
         $userInfo = $usersModel2->find($loggedUserID);
         $ogrno = $usersModel2->find($loggedUserID);
+        $allPlaces = $places->findAll();
+        $allComments = $comments->findAll();
         $data = [
             'title'=>'Dashboard',
             'userInfo'=>$userInfo,
             'ogrno'=>$ogrno,
             'actModel'=>$activitiesModel,
             'friendsModel'=>$friendsModel,
+            'allPlaces'=>$allPlaces,
+            'allComments'=>$allComments,
+            'comments'=>$comments,
+            'userModel'=>$usersModel2
         ];
         return view('/dashboard/places',$data);
+    }
+    public function comment(){
+        $comments = new \App\Models\CommentsModel();
+        $allComments = $comments->findAll();
+        $comment = $this->request->getPost('text');
+        $getPlaceId = $this->request->getPost('placeid');
+        $loggedUserID = session()->get('loggedUser');
+        $values = [
+            'places_id'=>$getPlaceId,
+            'comment_text'=>$comment,
+            'commenter'=>$loggedUserID,
+        ];
+        $query = $comments->insert($values);
+        return redirect()->to('/dashboard/places');
     }
 }

@@ -383,12 +383,11 @@ ul {
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a  class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>

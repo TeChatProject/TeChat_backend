@@ -43,6 +43,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('/dashboard/places','Dashboard::places');
 	$routes->post('/dashboard/etk_ekle','Dashboard::etk_ekle');
 	$routes->post('dashboard/katil','Dashboard::katil');
+	$routes->post('dashboard/comment','Dashboard::comment');
 });
 $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('dashboard/friends/add','Dashboard::add');
