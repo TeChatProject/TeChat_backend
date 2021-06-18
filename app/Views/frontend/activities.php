@@ -383,12 +383,11 @@ ul {
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
-                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
@@ -410,7 +409,7 @@ ul {
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
                     <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
                     <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
                     <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
@@ -419,10 +418,11 @@ ul {
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
             <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
-                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                    <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
-                
+                    <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
+                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$userInfo['id']} OR arkadas_id = {$userInfo['id']}) AND ark_durum = 'Evet'";
+                    echo count($friendsModel->where($wheres)->findAll())?>)</small></a></li>
+                    <li class="active"><a href="<?php echo base_url('dashboard/activities') ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                    <li><a href="<?= base_url('dashboard/places') ?>"><i class="fa fa-map-marker"></i> <span>Places</span> <small></small></a></li>
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->

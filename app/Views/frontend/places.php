@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -136,24 +136,217 @@ x<!DOCTYPE html>
         width:50px;
         height:50px;
     }
-    .modal-backdrop {
-        display:none;
-    }
-    .modal {
-        background: rgba(0,0,0,0.5);
-        
-    }
-    .modal-body{
-        position: relative;
-        margin: 10% auto;
-        max-width: 340px;
 
-    }
-    .postPic{
-        max-width: 100%;
-        max-height: 600px;
-        /*max-height: 100%;*/
-    }
+
+
+
+
+
+
+
+
+
+/* ===== Career ===== */
+.career-form {
+  background-color: #4e63d7;
+  border-radius: 5px;
+  padding: 0 16px;
+}
+
+.career-form .form-control {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0;
+  padding: 12px 15px;
+  color: #fff;
+}
+
+.career-form .form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+}
+
+.career-form .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+.career-form .form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+}
+
+.career-form .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+}
+
+.career-form .custom-select {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0;
+  padding: 12px 15px;
+  color: #fff;
+  width: 100%;
+  border-radius: 5px;
+  text-align: left;
+  height: auto;
+  background-image: none;
+}
+
+.career-form .custom-select:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.career-form .select-container {
+  position: relative;
+}
+
+.career-form .select-container:before {
+  position: absolute;
+  right: 15px;
+  top: calc(50% - 14px);
+  font-size: 18px;
+  color: #ffffff;
+  content: '\F2F9';
+  font-family: "Material-Design-Iconic-Font";
+}
+
+.filter-result .job-box {
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  border-radius: 10px;
+  padding: 10px 35px;
+}
+
+ul {
+  list-style: none; 
+}
+
+.list-disk li {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.list-disk li:last-child {
+  margin-bottom: 0;
+}
+
+.job-box .img-holder {
+  height: 65px;
+  width: 65px;
+  background-color: #4e63d7;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
+  background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 65px;
+}
+
+.career-title {
+  background-color: #4e63d7;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(78, 99, 215, 0.9)), to(#5a85dd));
+  background-image: linear-gradient(to right, rgba(78, 99, 215, 0.9) 0%, #5a85dd 100%);
+}
+
+.job-overview {
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+          box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  .job-overview {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px;
+  }
+}
+
+.job-overview .job-detail ul {
+  margin-bottom: 28px;
+}
+
+.job-overview .job-detail ul li {
+  opacity: 0.75;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.job-overview .job-detail ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.job-overview .overview-bottom,
+.job-overview .overview-top {
+  padding: 35px;
+}
+
+.job-content ul li {
+  font-weight: 600;
+  opacity: 0.75;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+}
+
+@media (min-width: 768px) {
+  .job-content ul li {
+    border-bottom: 0;
+    padding: 0;
+  }
+}
+
+.job-content ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+
+.form-control2 {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4d5154;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #eef0f3;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -163,6 +356,8 @@ x<!DOCTYPE html>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 <!------ Include the above in your HEAD tag ---------->
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -182,21 +377,18 @@ x<!DOCTYPE html>
                 <div class="inner-all">
                     <ul class="list-unstyled">
                         <li class="text-center">
-                            <?php if($userInfo['ppPath']==''):?>
-                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="<?= $userInfo['ad']." ".$userInfo['soyad']?>">
-                            <?php else: ?>
-                                <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="<?=base_url("profilepic/{$userInfo['ppPath']}")?>" alt="<?= $userInfo['ad']." ".$userInfo['soyad']?>">
-                            <?php endif;?>
+                            <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
                         </li>
                         <li class="text-center">
                             <h4 class="text-capitalize"><?= $userInfo['ad']." ".$userInfo['soyad'];?></h4><br>
                         </li>
                         <li>
-                            <a class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
+                            <a href="" class="btn btn-success text-center btn-block"><?= $userInfo['bolum']." ".$userInfo['sinif'].". Sınıf"; ?></a>
                         </li>
                         <li><br></li>
                         <li>
                             <div class="btn-group-vertical btn-block">
+                                <a href="" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Edit Account</a>
                                 <a href="<?= site_url('auth/logout');?>" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
                             </div>
                         </li>
@@ -204,8 +396,10 @@ x<!DOCTYPE html>
                 </div>
             </div>
         </div><!-- /.panel -->
+
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
+
     <div class="profile-cover">
         <div class="cover rounded shadow no-overflow">
             <div class="inner-cover">
@@ -215,21 +409,21 @@ x<!DOCTYPE html>
                         <i class="fa fa-bars"></i>
                     </button>
                     <ul class="dropdown-menu pull-right no-border" role="menu">
-                    <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                    <li><a href="<?=base_url("dashboard/profile/{$ogrno['ogrno']}");?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                    <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
-                    <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                    <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
+                    <li><a href="<?= base_url('dashboard/about'); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                    <li class="active"><a href=""><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
                     </ul>
                 </div>
                 <img  src="https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg" class="img-responsive full-width" alt="cover" style="max-height:200px;">
             </div>
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
-                <li class="active"><a href=""><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
-                <li><a href="<?php echo base_url('dashboard/profile/'.$ogrno['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li ><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$userInfo['id']} OR arkadas_id = {$userInfo['id']}) AND ark_durum = 'Evet'";
+            <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
+                    <li><a href="<?= base_url("dashboard/profile/{$ogrno['ogrno']}"); ?>"><i class="fa fa-fw fa-user"></i> <span>About</span></a></li>
+                    <li><a href="<?= base_url('dashboard/friends'); ?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$userInfo['id']} OR arkadas_id = {$userInfo['id']}) AND ark_durum = 'Evet'";
                     echo count($friendsModel->where($wheres)->findAll())?>)</small></a></li>
-                <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
-                <li><a href="<?= base_url('dashboard/places'); ?>"><i class="fa fa-map-marker"></i> <span>Places</span> <small></small></a></li>
+                    <li><a href="<?=base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                    <li class="active"><a href="<?= base_url('dashboard/places'); ?>"><i class="fa fa-map-marker"></i> <span>Places</span> <small></small></a></li>
             </ul>
         </div><!-- /.cover -->
     </div><!-- /.profile-cover -->

@@ -111,17 +111,6 @@ class Dashboard extends BaseController
         ];
         return view('dashboard/friends',$data);
     }
-    public function activities(){
-        $usersModel1 = new \App\Models\UsersModel();
-        $usersModel2 = new \App\Models\UsersInfo();
-        $loggedUserID = session()->get('loggedUser');
-        $userInfo = $usersModel2->find($loggedUserID);
-        $data = [
-            'title'=>'Dashboard',
-            'userInfo'=>$userInfo
-        ];
-        return view('dashboard/activities',$data);
-    }
     public function req(){
         $usersModel1 = new \App\Models\UsersModel();
         $usersModel2 = new \App\Models\UsersInfo();
@@ -216,5 +205,69 @@ class Dashboard extends BaseController
         ];
         $query = $usersModel->update($where,$value);
         return redirect()->to('/dashboard');
+    }
+    public function activities(){
+        $usersModel1 = new \App\Models\UsersModel();
+        $usersModel2 = new \App\Models\UsersInfo();
+        $friendsModel = new \App\Models\FriendModel();
+        $activitiesModel = new \App\Models\ActivitiesModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $usersModel2->find($loggedUserID);
+        $findAllAct = $activitiesModel->findAll();
+        
+        $data = [
+            'title'=>'Dashboard',
+            'loggedUser'=>$loggedUserID,
+            'userInfo'=>$userInfo,
+            'friendsModel'=>$friendsModel,
+            'act_Model'=>$activitiesModel,
+            'all_Act'=>$findAllAct,
+            'usersInfo'=>$usersModel2
+        ];
+        return view('dashboard/activities',$data);
+    }
+    public function etk_ekle(){
+        $activitiesModel = new \App\Models\ActivitiesModel();
+        $usersModel = new \App\Models\UsersInfo();
+        $loggedUserID = session()->get('loggedUser');
+        $baslik = $this->request->getPost('etkinlikbaslik');
+        $datetime = $this->request->getPost('datetime');
+        $type = $this->request->getPost('type');
+        $konum = $this->request->getPost('konum');
+        $text = $this->request->getPost('text');
+        $data = [
+            'act_author'=>$loggedUserID,
+            'act_type'=>$type,
+            'act_text'=>$text,
+            'act_header'=>$baslik,
+            'act_date'=>$datetime,
+            'act_konum'=>$konum
+        ];
+        $query = $activitiesModel->insert($data);
+        return redirect()->to('/dashboard/activities');
+    }
+    public function katil(){
+        $activitiesModel = new \App\Models\ActivitiesModel();
+        $aktivite = $this->request->getPost('aktiviteid');
+        $act_ids = $this->request->getPost('myId');
+        $query = $activitiesModel->set('act_persons',"{$act_ids},")->where('act_id',$aktivite)->update();
+        return redirect()->to('/dashboard/activities');
+    }
+    public function places(){
+        $usersModel1 = new \App\Models\UsersModel();
+        $usersModel2 = new \App\Models\UsersInfo();
+        $activitiesModel = new \App\Models\ActivitiesModel();
+        $friendsModel = new \App\Models\FriendModel();
+        $loggedUserID = session()->get('loggedUser');
+        $userInfo = $usersModel2->find($loggedUserID);
+        $ogrno = $usersModel2->find($loggedUserID);
+        $data = [
+            'title'=>'Dashboard',
+            'userInfo'=>$userInfo,
+            'ogrno'=>$ogrno,
+            'actModel'=>$activitiesModel,
+            'friendsModel'=>$friendsModel,
+        ];
+        return view('/dashboard/places',$data);
     }
 }

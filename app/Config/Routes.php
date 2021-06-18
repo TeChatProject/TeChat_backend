@@ -40,6 +40,9 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('/dashboard/activities','Dashboard::activities');
 	$routes->post('/dashboard/post','Dashboard::post');
 	$routes->post('/dashboard/pp','Dashboard::pp');
+	$routes->get('/dashboard/places','Dashboard::places');
+	$routes->post('/dashboard/etk_ekle','Dashboard::etk_ekle');
+	$routes->post('dashboard/katil','Dashboard::katil');
 });
 $routes->group('',['filter'=>'AuthCheck'],function($routes){
 	$routes->get('dashboard/friends/add','Dashboard::add');

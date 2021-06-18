@@ -322,8 +322,10 @@ img.profile-photo-lg{
             <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
                 <li><a href="<?= base_url('dashboard'); ?>"><i class="fa fa-fw fa-clock-o"></i> <span>Timeline</span></a></li>
                 <li><a href="<?php echo base_url('dashboard/profile/'.$userInfo['ogrno']); ?>"><i class="fa fa-fw fa-user"></i> <span>Profile</span></a></li>
-                <li class="active"><a href="<?= base_url('dashboard/friends')?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(23)</small></a></li>
+                <li class="active"><a href="<?= base_url('dashboard/friends')?>"><i class="fa fa-fw fa-users"></i><span> Friends </span><small>(<?php $wheres = "(id = {$userInfo['id']} OR arkadas_id = {$userInfo['id']}) AND ark_durum = 'Evet'";
+                    echo count($friendsModel->where($wheres)->findAll())?>)</small></a></li>
                 <li><a href="<?= base_url('dashboard/activities'); ?>"><i class="fa fa-fw fa-calendar"></i> <span>Activities</span> <small>(98)</small></a></li>
+                <li><a href="<?= base_url('dashboard/places'); ?>"><i class="fa fa-map-marker"></i> <span>Places</span> <small></small></a></li>
                 
             </ul>
         </div><!-- /.cover -->
