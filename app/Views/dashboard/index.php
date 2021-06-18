@@ -79,7 +79,7 @@
                     </div><!-- /.panel-footer -->
                     
                 </div><!-- /.panel -->
-<?php }elseif($userInfo['id']!=$row['id']){?>
+<?php }elseif($userInfo['id']==$row['id']){?>
     <div class="panel panel-success rounded shadow">
         <div class="panel-heading no-border">
             <div class="pull-left half">

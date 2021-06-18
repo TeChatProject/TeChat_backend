@@ -110,6 +110,6 @@
                   <?php }?>
                  </div>
                  </form>
-                 <button><?=strlen($vv['act_persons'])/2?></button>
+                 <button><?=floor(strlen($vv['act_persons'])/2)?></button>
              </div>
              <?php endforeach;?>
